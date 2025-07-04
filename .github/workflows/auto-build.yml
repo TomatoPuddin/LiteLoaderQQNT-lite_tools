@@ -22,8 +22,9 @@ jobs:
           npm run build
           rm -rf ./node_modules
           zip -r ./lite_tools_v4.zip ./*
-      - name: Upload Release File
-        uses: softprops/action-gh-release@v2
+      - name: Upload Build Artifact
+        uses: actions/upload-artifact@v4
         with:
-          files: lite_tools_v4.zip
-          body_path: ./release.md
+          name: lite_tools_v4
+          path: lite_tools_v4.zip
+          retention-days: 3  # 文件保留3天
